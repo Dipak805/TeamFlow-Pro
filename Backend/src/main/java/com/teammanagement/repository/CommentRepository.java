@@ -1,0 +1,12 @@
+package com.teammanagement.repository;
+
+import com.teammanagement.model.Comment;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+
+@Repository
+public interface CommentRepository extends JpaRepository<Comment, Long> {
+    List<Comment> findByTaskIdOrderByCreatedAtAsc(Long taskId);
+    List<Comment> findByUserId(Long userId);
+}
