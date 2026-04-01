@@ -6,7 +6,7 @@ services:
     plan: free # Change if needed
     envVars:
       - key: DB_URL
-        value: "jdbc:mysql://bd2gfszz849gaoiwjyh5-mysql.services.clever-cloud.com:3306/bd2gfszz849gaoiwjyh5?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+        value: "jdbc:mysql://bd2gfszz849gaoiwjyh5-mysql.services.clever-cloud.com:3306/bd2gfszz849gaoiwjyh5?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC&verifyServerCertificate=false"
       - key: DB_USERNAME
         value: "u9lrr4e02u5y6x8g"
       - key: DB_PASSWORD
