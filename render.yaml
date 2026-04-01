@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: teamflow-backend
+    env: docker
+    rootDir: Backend
+    plan: free # Change if needed
+    envVars:
+      - key: DB_URL
+        value: "jdbc:mysql://bd2gfszz849gaoiwjyh5-mysql.services.clever-cloud.com:3306/bd2gfszz849gaoiwjyh5?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+      - key: DB_USERNAME
+        value: "u9lrr4e02u5y6x8g"
+      - key: DB_PASSWORD
+        value: "NfgM4hmyFYJpObeGUZKd"
+      - key: PORT
+        value: "8080"
+  
+  - type: web
+    name: teamflow-frontend
+    env: static
+    rootDir: Frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./build
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: teamflow-backend
+          property: url
