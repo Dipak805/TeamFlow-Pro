@@ -20,7 +20,9 @@ export default function RegisterPage() {
       if (err.response) {
          toast.error(err.response?.data?.message || 'Registration failed');
       } else {
-         toast.error(err.message || 'Network Error: Cannot reach server');
+         toast.error(err.message === 'Network Error' 
+            ? 'Network Error: The server might be waking up (can take 50s). Please wait and try again.' 
+            : err.message || 'Network Error: Cannot reach server', { duration: 6000 });
       }
     } finally {
       setLoading(false);

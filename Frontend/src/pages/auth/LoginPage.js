@@ -22,7 +22,13 @@ export default function LoginPage() {
       else if (role === 'TEAM_LEAD') navigate('/teamlead/dashboard');
       else navigate('/member/tasks');
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Invalid credentials');
+      if (err.response) {
+        toast.error(err.response?.data?.message || 'Invalid credentials');
+      } else {
+        toast.error(err.message === 'Network Error' 
+           ? 'Network Error: The server might be waking up (can take 50s). Please wait and try again.' 
+           : err.message || 'Network Error: Cannot reach server', { duration: 6000 });
+      }
     } finally {
       setLoading(false);
     }
