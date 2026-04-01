@@ -53,7 +53,7 @@ export default function FilesPage() {
                       <td style={{ fontSize: 13, color: '#64748b' }}>{f.uploadedBy || '—'}</td>
                       <td>
                         <a
-                          href={`${process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL + '/api' : 'http://localhost:8080/api'}/member/files/${f.id}/download`}
+                          href={`${process.env.REACT_APP_API_HOST ? 'https://' + process.env.REACT_APP_API_HOST + '/api' : 'http://localhost:8080/api'}/member/files/${f.id}/download`}
                           className="btn btn-secondary btn-sm"
                           target="_blank"
                           rel="noreferrer"

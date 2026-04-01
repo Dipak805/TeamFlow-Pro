@@ -21,8 +21,8 @@ services:
     buildCommand: npm install && npm run build
     staticPublishPath: ./build
     envVars:
-      - key: REACT_APP_API_URL
+      - key: REACT_APP_API_HOST
         fromService:
           type: web
           name: teamflow-backend
-          property: url
+          property: host

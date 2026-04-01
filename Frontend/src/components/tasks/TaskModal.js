@@ -238,7 +238,7 @@ export default function TaskModal({ task, onClose, onUpdate, teamMembers, canEdi
                   <div key={f.id} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', background: '#f8fafc', borderRadius: 9 }}>
                     <Paperclip size={15} color="#94a3b8" />
                     <span style={{ flex: 1, fontSize: 13, fontWeight: 500 }}>{f.originalFileName}</span>
-                    <a href={`${process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL + '/api' : 'http://localhost:8080/api'}/member/files/${f.id}/download`} className="btn btn-ghost btn-sm" target="_blank" rel="noreferrer">
+                    <a href={`${process.env.REACT_APP_API_HOST ? 'https://' + process.env.REACT_APP_API_HOST + '/api' : 'http://localhost:8080/api'}/member/files/${f.id}/download`} className="btn btn-ghost btn-sm" target="_blank" rel="noreferrer">
                       <Download size={13}/> Download
                     </a>
                   </div>
