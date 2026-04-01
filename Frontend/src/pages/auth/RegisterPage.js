@@ -17,7 +17,11 @@ export default function RegisterPage() {
       toast.success('Account created! Please login.');
       navigate('/login');
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Registration failed');
+      if (err.response) {
+         toast.error(err.response?.data?.message || 'Registration failed');
+      } else {
+         toast.error(err.message || 'Network Error: Cannot reach server');
+      }
     } finally {
       setLoading(false);
     }
