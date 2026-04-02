@@ -1,8 +1,19 @@
 import axios from 'axios';
 
-const baseURL = process.env.REACT_APP_API_HOST 
-  ? `https://${process.env.REACT_APP_API_HOST}/api` 
-  : 'http://localhost:8080/api';
+const getBaseURL = () => {
+  const envURL = process.env.REACT_APP_API_URL || process.env.REACT_APP_API_HOST;
+  if (!envURL) return 'http://localhost:8080/api';
+  
+  // If it's a full URL (like https://...), use it, making sure it ends in /api
+  let base = envURL;
+  if (!base.startsWith('http')) base = `https://${base}`;
+  
+  // Ensure it doesn't end with a slash before adding /api
+  base = base.replace(/\/$/, "");
+  return base.endsWith('/api') ? base : `${base}/api`;
+};
+
+const baseURL = getBaseURL();
 
 const api = axios.create({
   baseURL,
